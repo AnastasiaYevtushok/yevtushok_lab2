@@ -41,5 +41,5 @@ class RhombusTest(unittest.TestCase):
 class NameTest(unittest.TestCase):
     def test_name(self):
         expected = "Square,Circle,Rhombus"
-        name = main.Square(0).name + "," + main.Circle(0).name + "," + main.Rhombus(0, 0).name
+        name = main.Square(0).__str__() + "," + main.Circle(0).__str__() + "," + main.Rhombus(0, 0).__str__()
         self.assertEqual(expected, name)
