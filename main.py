@@ -2,6 +2,12 @@ import math
 import abc
 
 
+def numValidation(value):
+    if value < 0:
+        raise ValueError("Name cannot be lower then 0")
+    return value
+
+
 class Shape:
     def __init__(self, name):
         self.name = name
@@ -21,7 +27,7 @@ class Shape:
 class Square(Shape):
     def __init__(self, length):
         super().__init__("Square")
-        self.length = length
+        self.length = numValidation(length)
 
     def area(self):
         return self.length ** 2
@@ -33,7 +39,7 @@ class Square(Shape):
 class Circle(Shape):
     def __init__(self, radius):
         super().__init__("Circle")
-        self.radius = radius
+        self.radius = numValidation(radius)
 
     def area(self):
         return math.pi * self.radius ** 2
@@ -45,8 +51,8 @@ class Circle(Shape):
 class Rhombus(Shape):
     def __init__(self, d1, d2):
         super().__init__("Rhombus")
-        self.d1 = d1
-        self.d2 = d2
+        self.d1 = numValidation(d1)
+        self.d2 = numValidation(d2)
 
     def area(self):
         return (self.d1 * self.d2) / 2

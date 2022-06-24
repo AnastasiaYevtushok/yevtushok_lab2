@@ -43,3 +43,20 @@ class NameTest(unittest.TestCase):
         expected = "Square,Circle,Rhombus"
         name = main.Square(0).__str__() + "," + main.Circle(0).__str__() + "," + main.Rhombus(0, 0).__str__()
         self.assertEqual(expected, name)
+
+
+class ValidationTest(unittest.TestCase):
+    def test_circle_validation(self):
+        with self.assertRaises(ValueError) as actual:
+            main.Circle(-5)
+        self.assertTrue("Name cannot be lower then 0", actual)
+
+    def test_square_validation(self):
+        with self.assertRaises(ValueError) as actual:
+            main.Square(-15)
+        self.assertTrue("Name cannot be lower then 0", actual)
+
+    def test_rhombus_validation(self):
+        with self.assertRaises(ValueError) as actual:
+            main.Rhombus(-5, 7)
+        self.assertTrue("Name cannot be lower then 0", actual)
